@@ -29,6 +29,8 @@ public class PlayerStats : MonoBehaviour
         if(Points % 10 == 0)
         {
             StartCoroutine(PlayerEssentialsScript.IncreaseSize());
+            if (MovementSpeed > 1)
+                MovementSpeed--;
         }
     }
 }

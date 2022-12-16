@@ -18,7 +18,8 @@ public class PlayerEssentials : MonoBehaviour
 
     private void FixedUpdate()
     {
-        PlayerMovement();
+        if(PlayerStatsScript.Alive)
+            PlayerMovement();
 
         // Checks if this object moves. If yes, 2D collider version also moves.
         if (transform.hasChanged == true) 
@@ -66,15 +67,18 @@ public class PlayerEssentials : MonoBehaviour
     // Increase size w/ lerp
     public IEnumerator IncreaseSize()
     {
-        Vector3 StartScale = transform.localScale;
-        Vector3 EndScale = StartScale * 2;
-
-        float flag = 0;
-        while(flag <= 0.4)
+        if(transform.localScale.x < 10)
         {
-            flag += Time.deltaTime;
-            transform.localScale = Vector3.Lerp(StartScale, EndScale, flag);
-            yield return null;
+            Vector3 StartScale = transform.localScale;
+            Vector3 EndScale = StartScale * 2;
+
+            float flag = 0;
+            while (flag <= 0.4)
+            {
+                flag += Time.deltaTime;
+                transform.localScale = Vector3.Lerp(StartScale, EndScale, flag);
+                yield return null;
+            }
         }
     }
 }
