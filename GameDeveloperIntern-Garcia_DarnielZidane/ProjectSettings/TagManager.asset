@@ -11,11 +11,11 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Ground
+  - GroundHole
+  - Obstacles
+  - ShaderHole
+  - ShaderHoleMask
   - 
   - 
   - 
