@@ -5,8 +5,8 @@ using UnityEngine;
 public class PlayerStats : MonoBehaviour
 {
     public bool Alive;
-    public int Points;
-    public float TimePlayed;
+    [HideInInspector] public int Points;
+    [HideInInspector] public float TimePlayed;
     public int MovementSpeed;
 
     PlayerEssentials PlayerEssentialsScript;
@@ -26,7 +26,7 @@ public class PlayerStats : MonoBehaviour
 
     public void SizeProgress()
     {
-        if(Points % 10 == 0)
+        if(Points % 20 == 0)
         {
             StartCoroutine(PlayerEssentialsScript.IncreaseSize());
             if (MovementSpeed > 1)

@@ -23,18 +23,9 @@ public class PlayerHoleTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        //Other is obstacles.
         Physics.IgnoreCollision(other, GroundCollider, true);
         Physics.IgnoreCollision(other, PlayerEssentialsScript.GeneratedMeshCollider, false);
     }
-
-    private void OnTriggerStay(Collider other)
-    {
-        //Other is obstacles.
-        Physics.IgnoreCollision(other, GroundCollider, true);
-        Physics.IgnoreCollision(other, PlayerEssentialsScript.GeneratedMeshCollider, false);
-    }
-
     private void OnTriggerExit(Collider other)
     {
         Physics.IgnoreCollision(other, GroundCollider, false);

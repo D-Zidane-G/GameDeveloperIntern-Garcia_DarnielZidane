@@ -11,6 +11,8 @@ public class PlayerEssentials : MonoBehaviour
     PlayerStats PlayerStatsScript;
     Mesh generatedMesh;
 
+    public AudioClip PlayerIncreaseSize;
+
     private void Start()
     {
         PlayerStatsScript = this.gameObject.GetComponent<PlayerStats>();
@@ -67,7 +69,8 @@ public class PlayerEssentials : MonoBehaviour
     // Increase size w/ lerp
     public IEnumerator IncreaseSize()
     {
-        if(transform.localScale.x < 10)
+        SoundManager.Instance.PlaySound(PlayerIncreaseSize);
+        if (transform.localScale.x < 10)
         {
             Vector3 StartScale = transform.localScale;
             Vector3 EndScale = StartScale * 2;
