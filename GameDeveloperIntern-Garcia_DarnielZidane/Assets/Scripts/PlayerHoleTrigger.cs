@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerHoleTrigger : MonoBehaviour
 {
-    public Collider GroundCollider;
+    public Collider[] GroundColliders;
     PlayerEssentials PlayerEssentialsScript;
 
     private void Start()
@@ -23,12 +23,18 @@ public class PlayerHoleTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Physics.IgnoreCollision(other, GroundCollider, true);
-        Physics.IgnoreCollision(other, PlayerEssentialsScript.GeneratedMeshCollider, false);
+        foreach (Collider collider in GroundColliders)
+        {
+            Physics.IgnoreCollision(other, collider, true);
+            Physics.IgnoreCollision(other, PlayerEssentialsScript.GeneratedMeshCollider, false);
+        }
     }
     private void OnTriggerExit(Collider other)
     {
-        Physics.IgnoreCollision(other, GroundCollider, false);
-        Physics.IgnoreCollision(other, PlayerEssentialsScript.GeneratedMeshCollider, true);
+        foreach (Collider collider in GroundColliders)
+        {
+            Physics.IgnoreCollision(other, collider, false);
+            Physics.IgnoreCollision(other, PlayerEssentialsScript.GeneratedMeshCollider, true);
+        }
     }
 }
